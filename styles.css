@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     padding: 20px;
-    max-width: 900px;
+    max-width: 1300px;
     margin: auto;
 }
 
@@ -60,7 +60,7 @@ label {
     display: flex;
     gap: 20px; /* Separación entre columnas */
     margin-top: 20px;
-    height: 500px; /* Altura común para ambas columnas */
+    height: 800px; /* Altura común para ambas columnas */
   }
   
   .flex-column {
@@ -85,4 +85,39 @@ label {
     padding: 10px;
     overflow-y: auto;
     box-sizing: border-box;
+  }
+
+  body {
+    font-family: sans-serif;
+    padding: 1em;
+    background: #f9f9f9;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2em;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 0.5em;
+    text-align: left;
+  }
+
+  th {
+    background: #f0f0f0;
+  }
+
+  .copiable {
+    cursor: pointer;
+    color: #007acc;
+  }
+
+  .copiable:hover {
+    background: #e6f2ff;
+  }
+
+  h3 {
+    margin-top: 2em;
   }

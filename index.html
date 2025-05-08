@@ -37,79 +37,94 @@
     </div>
 
     <div class="xpath-guide">
-        <h2>📘 Chuleta XPath Completa</h2>
+        <h2>📘 Chuleta XPath</h2>
 
-        <h3>📍 Selección de nodos</h3>
-        <ul>
-            <li><code>/</code>: raíz del documento</li>
-            <li><code>//</code>: cualquier nivel</li>
-            <li><code>.</code>: nodo actual</li>
-            <li><code>..</code>: nodo padre</li>
-            <li><code>*</code>: cualquier nodo</li>
-            <li><code>node()</code>: cualquier tipo de nodo</li>
-            <li><code>text()</code>: contenido textual</li>
-        </ul>
+        <table>
+            <thead>
+              <tr><th colspan="3">📍 Selección de nodos</th></tr>
+              <tr><th>Expresión</th><th>Descripción</th><th>Ejemplo aplicado</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>/</code></td><td>Raíz del documento</td><td class="copiable"><code>/catalog</code></td></tr>
+              <tr><td><code>//</code></td><td>Cualquier nivel</td><td class="copiable"><code>//book</code></td></tr>
+              <tr><td><code>.</code></td><td>Nodo actual</td><td class="copiable"><code>/.</code></td></tr>
+              <tr><td><code>..</code></td><td>Nodo padre</td><td class="copiable"><code>//price/..</code></td></tr>
+              <tr><td><code>*</code></td><td>Cualquier nodo</td><td class="copiable"><code>//*</code></td></tr>
+              <tr><td><code>node()</code></td><td>Cualquier tipo de nodo</td><td class="copiable"><code>//book/node()</code></td></tr>
+              <tr><td><code>text()</code></td><td>Contenido textual</td><td class="copiable"><code>//title/text()</code></td></tr>
+            </tbody>
+            <thead>
+              <tr><th colspan="3">🔎 Predicados - Filtros</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>[n]</code></td><td>n-avo hijo</td><td class="copiable"><code>//author[1]</code></td></tr>
+              <tr><td><code>()</code></td><td>Selección global</td><td class="copiable"><code>(//author)[1]</code></td></tr>
+              <tr><td><code>[last()]</code></td><td>Último hijo</td><td class="copiable"><code>//book[last()]</code></td></tr>
+              <tr><td><code>[last()-n]</code></td><td>n-avo hijo desde el final</td><td class="copiable"><code>//book[last()-1]</code></td></tr>
+              <tr><td><code>[expresión]</code></td><td>Filtro mediante expresión logica en etiquetas hijas</td><td class="copiable"><code>//book[price &gt; 25]</code></td></tr>
+              <tr><td><code>[@atributo]</code></td><td>Filtro si tiene el atributo</td><td class="copiable"><code>//price[@status]</code></td></tr>
+              <tr><td><code>[@atributo y expresión]</code></td><td>Filtro mediante expresión lógica en atributo</td><td class="copiable"><code>//book[@id='bk102']</code></td></tr>
+              <tr><td><code>position()</code></td><td>Posición de cada elemento en una lista de resultados</td><td class="copiable"><code>//book[position() &lt; 2]</code></td></tr>
+            </tbody>
+            <thead>
+              <tr><th colspan="3">🧭 Ejes (Axes) - Para navegar por el árbol XML en cualquier dirección</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>child::</code></td><td>Hijos directos</td><td class="copiable"><code>//book/child::title</code></td></tr>
+                <tr><td><code>parent::</code></td><td>Nodo padre</td><td class="copiable"><code>//title/parent::book</code></td></tr>
+                <tr><td><code>self::</code></td><td>El mismo nodo actual</td><td class="copiable"><code>//self::book</code></td></tr>
+                <tr><td><code>descendant::</code></td><td>Todos los descendientes</td><td class="copiable"><code>//catalog/descendant::*</code></td></tr>
+                <tr><td><code>descendant-or-self::</code></td><td>El nodo actual y sus descendientes</td><td class="copiable"><code>//catalog/descendant-or-self::*</code></td></tr>
+                <tr><td><code>ancestor::</code></td><td>Todos los ancestros</td><td class="copiable"><code>//keyword/ancestor::book</code></td></tr>
+                <tr><td><code>ancestor-or-self::</code></td><td>El nodo actual y sus ancestros</td><td class="copiable"><code>//keyword/ancestor-or-self::book</code></td></tr>
+                <tr><td><code>following-sibling::</code></td><td>Hermanos siguientes</td><td class="copiable"><code>//book[@id='bk102']/following-sibling::book</code></td></tr>
+                <tr><td><code>preceding-sibling::</code></td><td>Hermanos anteriores</td><td class="copiable"><code>//book[@id='bk102']/price/preceding-sibling::*</code></td></tr>
+                <tr><td><code>following::</code></td><td>Todos los nodos posteriores (a la primera ocurrencia si hay varias)</td><td class="copiable"><code>//section/following::*</code></td></tr>
+                <tr><td><code>preceding::</code></td><td>Todos los nodos anteriores (a la última ocurrencia si hay varias)</td><td class="copiable"><code>//book[@id='bk103']/preceding::book</code></td></tr>
+                <tr><td><code>attribute::</code></td><td>Atributos del nodo actual</td><td class="copiable"><code>//price/attribute::currency</code></td></tr>
+            </tbody>
+            <thead>
+              <tr><th colspan="3">⚙️ Operadores XPath</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>=</code></td><td>Igualdad</td><td class="copiable"><code>//book[@id='bk101']</code></td></tr>
+              <tr><td><code>!=</code></td><td>Desigualdad</td><td class="copiable"><code>//book[@id!='bk101']</code></td></tr>
+              <tr><td><code>&lt;</code></td><td>Menor que</td><td class="copiable"><code>//book[price &lt; 20]</code></td></tr>
+              <tr><td><code>&gt;</code></td><td>Mayor que</td><td class="copiable"><code>//book[price &gt; 25]</code></td></tr>
+              <tr><td><code>&lt;=</code></td><td>Menor o igual</td><td class="copiable"><code>//book[price &lt;= 24.95]</code></td></tr>
+              <tr><td><code>&gt;=</code></td><td>Mayor o igual</td><td class="copiable"><code>//book[price &gt;= 24.95]</code></td></tr>
+              <tr><td><code>and</code></td><td>Y lógico</td><td class="copiable"><code>//book[@category='fiction' and price &lt; 25]</code></td></tr>
+              <tr><td><code>or</code></td><td>O lógico</td><td class="copiable"><code>//book[price &lt; 20 or price &gt; 29]</code></td></tr>
+              <tr><td><code>mod</code></td><td>Módulo</td><td class="copiable"><code>//book[position() mod 2 = 1]</code></td></tr>
+            </tbody>
+            <thead>
+              <tr><th colspan="3">🛠️ Funciones comunes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>text()</code></td><td>Valor textual</td><td class="copiable"><code>//title/text()</code></td></tr>
+              <tr><td><code>contains(A, B)</code></td><td>A contiene B</td><td class="copiable"><code>//title[contains(., 'Harry')]</code></td></tr>
+              <tr><td><code>starts-with(A, B)</code></td><td>A empieza por B</td><td class="copiable"><code>//title[starts-with(., 'H')]</code></td></tr>
+              <tr><td><code>string-length(A)</code></td><td>Longitud de A</td><td class="copiable"><code>//book[string-length(title) > 11]</code></td></tr>
+              <tr><td><code>normalize-space(A)</code></td><td>Quita espacios</td><td class="copiable"><code>normalize-space(title)</code></td></tr>
+              <tr><td><code>name()</code></td><td>Nombre del nodo</td><td class="copiable"><code>name(//book/title)</code></td></tr>
+            </tbody>
+            <thead>
+              <tr><th colspan="3">🧪 Ejemplos combinados</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>//book[@category='fiction' and price &lt; 25]</code></td><td>Libros de ficción baratos</td><td class="copiable"><code>bk103</code></td></tr>
+              <tr><td><code>//book[author='J.K. Rowling']/title</code></td><td>Títulos de libros de Rowling</td><td class="copiable"><code>Harry Potter</code></td></tr>
+              <tr><td><code>//magazine/title | //book/title</code></td><td>Títulos de libros o revistas</td><td class="copiable">Todos los títulos</td></tr>
+            </tbody>
+          </table>
+          
 
-        <h3>🔎 Predicados (filtros entre corchetes)</h3>
-        <ul>
-            <li><code>//book[1]</code>: primer hijo <code>book</code></li>
-            <li><code>(//book)[1]</code>: primer <code>book</code> global</li>
-            <li><code>//book[price &gt; 20]</code>: libros con precio mayor a 20</li>
-            <li><code>//book[@id]</code>: nodos con atributo <code>id</code></li>
-            <li><code>//book[@id='bk101']</code>: nodo con <code>id="bk101"</code></li>
-            <li><code>//book[contains(title, 'Harry')]</code>: título contiene "Harry"</li>
-        </ul>
-
-        <h3>🧭 Ejes (Axes)</h3>
-        <ul>
-            <li><code>child::title</code>: hijos llamados <code>title</code></li>
-            <li><code>parent::*</code>: nodo padre</li>
-            <li><code>ancestor::book</code>: ancestros llamados <code>book</code></li>
-            <li><code>descendant::price</code>: todos los <code>price</code> debajo</li>
-            <li><code>preceding-sibling::book</code>: hermanos anteriores</li>
-            <li><code>following-sibling::book</code>: hermanos siguientes</li>
-            <li><code>self::node()</code>: el mismo nodo</li>
-        </ul>
-
-        <h3>⚙️ Operadores XPath</h3>
-        <ul>
-            <li><code>=</code>, <code>!=</code>: igualdad / desigualdad</li>
-            <li><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
-            <li><code>and</code>, <code>or</code>: lógicos</li>
-            <li><code>mod</code>: módulo</li>
-        </ul>
-
-        <h3>🛠️ Funciones comunes</h3>
-        <ul>
-            <li><code>text()</code>: valor textual</li>
-            <li><code>contains(A, B)</code>: A contiene B</li>
-            <li><code>starts-with(A, B)</code>: A empieza por B</li>
-            <li><code>string-length(A)</code>: longitud de A</li>
-            <li><code>normalize-space(A)</code>: quita espacios</li>
-            <li><code>name()</code>: nombre del nodo</li>
-        </ul>
-
-        <h3>🔢 Posiciones</h3>
-        <ul>
-            <li><code>position()</code>: posición actual</li>
-            <li><code>last()</code>: última posición</li>
-            <li><code>//book[position() &lt;= 2]</code>: primeros dos libros</li>
-            <li><code>//book[last()-1]</code>: penúltimo libro</li>
-        </ul>
-
-        <h3>🧪 Ejemplos combinados</h3>
-        <ul>
-            <li><code>//book[@category='fiction' and price &lt; 25]</code>: libros de ficción baratos</li>
-            <li><code>//book[author='J.K. Rowling']/title</code>: títulos de libros de Rowling</li>
-            <li><code>//magazine/title | //book/title</code>: títulos de libros o revistas</li>
-        </ul>
-
-        <p>📚 Referencia útil: <a href="https://www.w3schools.com/xml/xpath_intro.asp" target="_blank">MDN
-                XPath</a></p>
+        <p>📚 Referencia útil: <a href="https://www.w3schools.com/xml/xpath_intro.asp" target="_blank">w3schools</a></p>
     </div>
 
 
     <script src="interprete.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 
