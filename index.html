@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intérprete de XPath</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Intérprete de XPath</h1>
+
+    <div class="flex-buttons">
+        <label for="mode">Modo de selección:</label>
+        <select id="mode">
+            <option value="text">Texto</option>
+            <option value="node">Nodo completo</option>
+        </select>
+
+        <button id="button-ejecutar">Ejecutar</button>
+        <button id="button-ejemplo">XML de ejemplo</button>
+    </div>
+
+    <label for="xpath">Selector XPath:</label>
+    <input type="text" id="xpath" placeholder="Ejemplo: //book/title" />
+    <div class="flex-container">
+        <div class="flex-column">
+            <label for="xml">XML:</label>
+            <textarea id="xml" rows="25"></textarea>
+        </div>
+
+        <div class="flex-column">
+            <label>Resultado:</label>
+            <div id="result" class="result-box"></div>
+        </div>
+    </div>
+
+    <div class="xpath-guide">
+        <h2>📘 Chuleta XPath Completa</h2>
+
+        <h3>📍 Selección de nodos</h3>
+        <ul>
+            <li><code>/</code>: raíz del documento</li>
+            <li><code>//</code>: cualquier nivel</li>
+            <li><code>.</code>: nodo actual</li>
+            <li><code>..</code>: nodo padre</li>
+            <li><code>*</code>: cualquier nodo</li>
+            <li><code>node()</code>: cualquier tipo de nodo</li>
+            <li><code>text()</code>: contenido textual</li>
+        </ul>
+
+        <h3>🔎 Predicados (filtros entre corchetes)</h3>
+        <ul>
+            <li><code>//book[1]</code>: primer hijo <code>book</code></li>
+            <li><code>(//book)[1]</code>: primer <code>book</code> global</li>
+            <li><code>//book[price &gt; 20]</code>: libros con precio mayor a 20</li>
+            <li><code>//book[@id]</code>: nodos con atributo <code>id</code></li>
+            <li><code>//book[@id='bk101']</code>: nodo con <code>id="bk101"</code></li>
+            <li><code>//book[contains(title, 'Harry')]</code>: título contiene "Harry"</li>
+        </ul>
+
+        <h3>🧭 Ejes (Axes)</h3>
+        <ul>
+            <li><code>child::title</code>: hijos llamados <code>title</code></li>
+            <li><code>parent::*</code>: nodo padre</li>
+            <li><code>ancestor::book</code>: ancestros llamados <code>book</code></li>
+            <li><code>descendant::price</code>: todos los <code>price</code> debajo</li>
+            <li><code>preceding-sibling::book</code>: hermanos anteriores</li>
+            <li><code>following-sibling::book</code>: hermanos siguientes</li>
+            <li><code>self::node()</code>: el mismo nodo</li>
+        </ul>
+
+        <h3>⚙️ Operadores XPath</h3>
+        <ul>
+            <li><code>=</code>, <code>!=</code>: igualdad / desigualdad</li>
+            <li><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
+            <li><code>and</code>, <code>or</code>: lógicos</li>
+            <li><code>mod</code>: módulo</li>
+        </ul>
+
+        <h3>🛠️ Funciones comunes</h3>
+        <ul>
+            <li><code>text()</code>: valor textual</li>
+            <li><code>contains(A, B)</code>: A contiene B</li>
+            <li><code>starts-with(A, B)</code>: A empieza por B</li>
+            <li><code>string-length(A)</code>: longitud de A</li>
+            <li><code>normalize-space(A)</code>: quita espacios</li>
+            <li><code>name()</code>: nombre del nodo</li>
+        </ul>
+
+        <h3>🔢 Posiciones</h3>
+        <ul>
+            <li><code>position()</code>: posición actual</li>
+            <li><code>last()</code>: última posición</li>
+            <li><code>//book[position() &lt;= 2]</code>: primeros dos libros</li>
+            <li><code>//book[last()-1]</code>: penúltimo libro</li>
+        </ul>
+
+        <h3>🧪 Ejemplos combinados</h3>
+        <ul>
+            <li><code>//book[@category='fiction' and price &lt; 25]</code>: libros de ficción baratos</li>
+            <li><code>//book[author='J.K. Rowling']/title</code>: títulos de libros de Rowling</li>
+            <li><code>//magazine/title | //book/title</code>: títulos de libros o revistas</li>
+        </ul>
+
+        <p>📚 Referencia útil: <a href="https://www.w3schools.com/xml/xpath_intro.asp" target="_blank">MDN
+                XPath</a></p>
+    </div>
+
+
+    <script src="interprete.js"></script>
+
+</body>
+
+</html>

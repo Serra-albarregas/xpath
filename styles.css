@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+textarea,
+input,
+select,
+button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+}
+
+#result {
+    background: #f1f1f1;
+    border: 1px solid #ccc;
+    white-space: pre-wrap;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.xpath-guide {
+    background-color: #e8f4ff;
+    border: 1px solid #b3d7ff;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.xpath-guide h2 {
+    margin-top: 0;
+}
+
+.xpath-guide code {
+    background-color: #dceeff;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.xpath-guide ul {
+    padding-left: 20px;
+}
+
+.flex-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.flex-container {
+    display: flex;
+    gap: 20px; /* Separación entre columnas */
+    margin-top: 20px;
+    height: 500px; /* Altura común para ambas columnas */
+  }
+  
+  .flex-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  textarea {
+    flex: 1;
+    resize: none; /* opcional: evita que el usuario cambie el tamaño manualmente */
+    height: 100%;
+    box-sizing: border-box;
+  }
+  
+  .result-box {
+    flex: 1;
+    background: #f1f1f1;
+    border: 1px solid #ccc;
+    white-space: pre-wrap;
+    padding: 10px;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
