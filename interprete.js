@@ -119,6 +119,13 @@ function restoreExampleXML() {
         <editor nationality="ES">Carlos Ruiz</editor>
       </issue>
     </magazine>
+    <magazine id="mg203" category="science">
+      <title>Química Analítica</title>
+      <issue>
+        <date>2024-10</date>
+        <editor nationality="ES">Adam Silvera</editor>
+      </issue>
+    </magazine>
   </section>
 </catalog>`;
     document.getElementById('xml').value = exampleXML;

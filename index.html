@@ -103,11 +103,29 @@
             <tbody>
               <tr><td><code>text()</code></td><td>Valor textual</td><td class="copiable"><code>//title/text()</code></td></tr>
               <tr><td><code>contains(A, B)</code></td><td>A contiene B</td><td class="copiable"><code>//title[contains(., 'Harry')]</code></td></tr>
+              <tr><td><code>count(A)</code></td><td>Número de hijos de A</td><td class="copiable"><code>//catalog[count(section/book)>0]</code></td></tr>
               <tr><td><code>starts-with(A, B)</code></td><td>A empieza por B</td><td class="copiable"><code>//title[starts-with(., 'H')]</code></td></tr>
               <tr><td><code>string-length(A)</code></td><td>Longitud de A</td><td class="copiable"><code>//book[string-length(title) > 11]</code></td></tr>
+              <tr><td><code>substring(A, from, to)</code></td><td>Substring desde from hasta to (empezando en 1, ambos incluidos)</td><td class="copiable"><code>//book[substring(@id, 1, 2) = "bk"]</code></td></tr>
             </tbody>
           </table>
-          
+          <table>
+            <thead>
+              <tr><th colspan="2">Ejemplos</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Obtener el título del libro cuyo primer autor tiene nacionalidad "UK".</td><td class="copiable"><code>//book[authors/author[1]/@nationality="UK"]/title/text()</code></td></tr>
+              <tr><td>Obtener los títulos de los libros que contienen al menos una palabra clave (keyword).</td><td class="copiable"><code>//book[description/keywords]/title/text()</code></td></tr>
+              <tr><td>Obtener el título del libro cuya moneda no es "USD".</td><td class="copiable"><code>//book[price[@currency!="USD"]]/title/text()</code></td></tr>
+              <tr><td>Obtener el nombre de los autores que escribieron libros de categoría "fiction" y tienen nacionalidad "UK".</td><td class="copiable"><code>//book[@category="fiction"]/authors/author[@nationality="UK"]/text()</code></td></tr>
+              <tr><td>Obtener el título de los libros que tienen más de un autor.</td><td class="copiable"><code>//book[count(authors/author) &gt; 1]/title/text()</code></td></tr>
+              <tr><td>Obtener el título del libro que está en oferta (atributo status="sale").</td><td class="copiable"><code>//book[price/@status="sale"]/title/text()</code></td></tr>
+              <tr><td>Obtener los títulos de todas las publicaciones (libros y revistas) cuyo editor o autor tiene nacionalidad "US".</td><td class="copiable"><code>//book[authors/author[@nationality="US"]]/title/text() | //magazine[issue/editor[@nationality="US"]]/title/text()</code></td></tr>
+              <tr><td>Obtener los títulos de las revistas publicadas después del año 2023.</td><td class="copiable"><code>//magazine[substring(issue/date,1,4) &gt; 2023]/title/text()</code></td></tr>
+              <tr><td>Obtener los títulos de los libros escritos por un editor.</td><td class="copiable"><code>//book[authors/author=//editor]/title/text()</code></td></tr>
+
+            </tbody>
+          </table>
 
         <p>📚 Referencia útil: <a href="https://www.w3schools.com/xml/xpath_intro.asp" target="_blank">w3schools</a></p>
     </div>
