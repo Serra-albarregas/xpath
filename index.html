@@ -105,16 +105,6 @@
               <tr><td><code>contains(A, B)</code></td><td>A contiene B</td><td class="copiable"><code>//title[contains(., 'Harry')]</code></td></tr>
               <tr><td><code>starts-with(A, B)</code></td><td>A empieza por B</td><td class="copiable"><code>//title[starts-with(., 'H')]</code></td></tr>
               <tr><td><code>string-length(A)</code></td><td>Longitud de A</td><td class="copiable"><code>//book[string-length(title) > 11]</code></td></tr>
-              <tr><td><code>normalize-space(A)</code></td><td>Quita espacios</td><td class="copiable"><code>normalize-space(title)</code></td></tr>
-              <tr><td><code>name()</code></td><td>Nombre del nodo</td><td class="copiable"><code>name(//book/title)</code></td></tr>
-            </tbody>
-            <thead>
-              <tr><th colspan="3">🧪 Ejemplos combinados</th></tr>
-            </thead>
-            <tbody>
-              <tr><td><code>//book[@category='fiction' and price &lt; 25]</code></td><td>Libros de ficción baratos</td><td class="copiable"><code>bk103</code></td></tr>
-              <tr><td><code>//book[author='J.K. Rowling']/title</code></td><td>Títulos de libros de Rowling</td><td class="copiable"><code>Harry Potter</code></td></tr>
-              <tr><td><code>//magazine/title | //book/title</code></td><td>Títulos de libros o revistas</td><td class="copiable">Todos los títulos</td></tr>
             </tbody>
           </table>
           
